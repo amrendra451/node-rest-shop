@@ -2,6 +2,12 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb+srv://root:"+ process.env.MONGODB_ATLAS_PASS +"@node-rest-shop-nckta.mongodb.net/test?retryWrites=true&w=majority", {
+    useNewUrlParser: true
+});
+mongoose.Promise = global.Promise;
 
 const productRoutes = require("./api/routes/products");
 const orderRoutes = require("./api/routes/orders");
